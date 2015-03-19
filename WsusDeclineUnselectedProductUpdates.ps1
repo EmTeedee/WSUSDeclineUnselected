@@ -1,10 +1,10 @@
 Write-Host Decline Updates for Unselected Products
 Write-Host
 
-[reflection.assembly]::LoadWithPartialName("Microsoft.UpdateServices.Administration") | Out-Null;
+[reflection.assembly]::LoadWithPartialName("Microsoft.UpdateServices.Administration") | Out-Null
 
 # Connect to Update Server
-$wsus = [Microsoft.UpdateServices.Administration.AdminProxy]::GetUpdateServer();
+$wsus = [Microsoft.UpdateServices.Administration.AdminProxy]::GetUpdateServer()
 
 $products = @()
 $wsus.GetSubscription().GetUpdateCategories() | ? { $_.Type -eq "Product"} | ForEach-Object {
